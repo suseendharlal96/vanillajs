@@ -72,3 +72,61 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+const section = document.getElementsByClassName("section-center")[0];
+window.addEventListener("DOMContentLoaded", () => {
+  renderContents(menu);
+});
+
+const filterContainer = document.getElementsByClassName("btn-container")[0];
+["all", ...new Set(menu.map((m) => m.category))].forEach((btn) => {
+  const button = document.createElement("button");
+  button.innerText = btn;
+  button.classList.add("filter-btn");
+  button.setAttribute("data-id", btn);
+  filterContainer.appendChild(button);
+  button.addEventListener("click", (e) => {
+    let filteredMenu = [...menu];
+    if (e.currentTarget.dataset.id !== "all") {
+      filteredMenu = menu.filter((data) => data.category === button.getAttribute("data-id"));
+    }
+    renderContents(filteredMenu, button.getAttribute("data-id"));
+  });
+});
+
+function renderContents(menu) {
+  section.innerHTML = "";
+
+  menu.forEach((m) => {
+    const articleContainer = document.createElement("article");
+    articleContainer.classList.add("menu-item");
+
+    const img = document.createElement("img");
+    img.classList.add("photo");
+    img.src = m.img;
+
+    const itemInfo = document.createElement("div");
+    itemInfo.classList.add("item-info");
+
+    const header = document.createElement("header");
+
+    const name = document.createElement("h4");
+    name.innerText = m.title;
+    const price = document.createElement("h4");
+    price.classList.add("price");
+    price.innerText = `$ ${m.price}`;
+
+    header.appendChild(name);
+    header.appendChild(price);
+    itemInfo.appendChild(header);
+
+    const desc = document.createElement("p");
+    desc.classList.add("item-text");
+    desc.innerText = m.desc;
+    itemInfo.appendChild(desc);
+
+    articleContainer.appendChild(img);
+    articleContainer.appendChild(itemInfo);
+    section.appendChild(articleContainer);
+  });
+}

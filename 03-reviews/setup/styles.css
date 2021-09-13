@@ -72,7 +72,18 @@ body {
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
+  width: 100%;
 }
+#btns {
+  width: 75%;
+}
+
+button[id^="btn"] {
+  width: 30%;
+  height: 30px;
+  font-size: 25px;
+}
+
 ul {
   list-style-type: none;
 }
