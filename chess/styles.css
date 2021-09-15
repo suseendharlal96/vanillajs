@@ -1,0 +1,31 @@
+*,
+*::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  padding: 0.75em;
+}
+
+.chess-container {
+  /* padding: 0.5em; */
+  border: 2px solid brown;
+}
+
+.row {
+  display: flex;
+}
+.square {
+  width: 50%;
+  height: 75px;
+}
+.dark {
+  background-color: black;
+}
+
+.highlight {
+  background-color: red;
+}
