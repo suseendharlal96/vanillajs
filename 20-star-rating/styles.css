@@ -1,0 +1,80 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+:root {
+  --border-width: 100px;
+  --shape-color: hsl(0, 4%, 90%);
+  --rotation: 70deg;
+}
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: calc(var(--border-width) / 2) solid transparent;
+  border-right: calc(var(--border-width) / 2) solid transparent;
+  border-bottom: var(--border-width) solid var(--shape-color);
+}
+
+.star-six {
+  /* combination of 2 triangles */
+  width: 0;
+  height: 0;
+  border-left: calc(var(--border-width) / 2) solid transparent;
+  border-right: calc(var(--border-width) / 2) solid transparent;
+  border-bottom: var(--border-width) solid var(--shape-color);
+  position: relative;
+}
+
+.star-six::after {
+  position: absolute;
+  content: "";
+  top: calc((var(--border-width) / 3));
+  left: calc(-1 * (var(--border-width) / 2));
+  width: 0;
+  height: 0;
+  border-left: calc(var(--border-width) / 2) solid transparent;
+  border-right: calc(var(--border-width) / 2) solid transparent;
+  border-top: var(--border-width) solid var(--shape-color);
+}
+
+.star-five {
+  margin: 50px 0;
+  position: relative;
+  width: 0px;
+  height: 0px;
+  border-right: var(--border-width) solid transparent;
+  border-left: var(--border-width) solid transparent;
+  border-bottom: calc(var(--border-width) - 30px) solid var(--shape-color);
+  transform: rotate(calc(var(--rotation) / 2));
+}
+.star-five::before {
+  position: absolute;
+  content: "";
+  top: -45px;
+  left: -65px;
+  height: 0;
+  width: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 80px solid var(--shape-color);
+  transform: rotate(calc(-1 * var(--rotation) / 2));
+}
+.star-five::after {
+  position: absolute;
+  display: block;
+  top: 3px;
+  left: -105px;
+  width: 0px;
+  height: 0px;
+  border-right: var(--border-width) solid transparent;
+  border-left: var(--border-width) solid transparent;
+  border-bottom: calc(var(--border-width) - 30px) solid var(--shape-color);
+  transform: rotate(calc(-1 * var(--rotation)));
+  content: "";
+}
+
+.rating-container {
+  display: flex;
+  justify-content: center;
+}
