@@ -41,6 +41,7 @@
 .star-five {
   margin: 50px 0;
   position: relative;
+  cursor: pointer;
   width: 0px;
   height: 0px;
   border-right: var(--border-width) solid transparent;
