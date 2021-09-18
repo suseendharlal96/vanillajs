@@ -191,7 +191,7 @@ Countdown Timer
   color: var(--clr-grey-5);
   font-size: 0.85rem;
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 800px) {
   .section-center {
     display: grid;
     grid-template-columns: 1fr 1fr;
