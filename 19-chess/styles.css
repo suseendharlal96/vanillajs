@@ -12,7 +12,7 @@
 
 .chess-container {
   /* padding: 0.5em; */
-  border: 2px solid brown;
+  border: 2px solid hsl(0, 0%, 0%);
 }
 
 .row {
@@ -23,9 +23,9 @@
   height: 70px;
 }
 .dark {
-  background-color: black;
+  background-color: hsl(0, 0%, 0%);
 }
 
 .highlight {
-  background-color: red;
+  background-color: hsl(32, 96%, 51%);
 }

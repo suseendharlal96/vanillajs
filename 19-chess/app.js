@@ -34,17 +34,15 @@ function removeHighlight() {
 
 function highlight(r, c) {
   for (let d of directions) {
-    const newR = d[0];
-    const newC = d[1];
-    helper(newR, newC, r, c);
+    helper(d[0], d[1], r, c);
   }
 }
 
 function helper(diagRow, diagCol, currRow, currCol) {
   while (currRow >= 0 && currCol >= 0 && currRow < 8 && currCol < 8) {
-    const sq = document.querySelector(`[data-pos="${currRow}_${currCol}"]`);
-    if (sq) {
-      sq.classList.add("highlight");
+    const square = document.querySelector(`[data-pos="${currRow}_${currCol}"]`);
+    if (square) {
+      square.classList.add("highlight");
     }
     currRow += diagRow;
     currCol += diagCol;
