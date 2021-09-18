@@ -1,4 +1,5 @@
 const chessContainer = document.querySelector(".chess-container");
+const set = new Set();
 
 for (let i = 0; i < 8; i++) {
   const row = document.createElement("div");
@@ -10,13 +11,13 @@ for (let i = 0; i < 8; i++) {
       sq.classList.add("dark");
     }
     sq.setAttribute("data-pos", `${i}_${j}`);
-    sq.addEventListener("mouseenter", () => highlight(i, j));
+    sq.addEventListener("mouseover", () => highlight(i, j));
     sq.addEventListener("mouseleave", () => removeHighlight());
     row.append(sq);
   }
   chessContainer.append(row);
 }
-const dir = [
+const directions = [
   [-1, -1],
   [-1, 1],
   [1, -1],
@@ -25,49 +26,27 @@ const dir = [
 
 function removeHighlight() {
   const sq = document.querySelectorAll(".square");
-  //   console.log({ newRow, newCol });
+  set.clear();
   sq.forEach((s) => {
     s.classList.remove("highlight");
   });
 }
 
 function highlight(r, c) {
-  let i = r;
-  let j = c;
-  let k = r;
-  let l = c;
-  let m = r;
-  let n = c;
-  let a = r;
-  let b = c;
+  for (let d of directions) {
+    const newR = d[0];
+    const newC = d[1];
+    helper(newR, newC, r, c);
+  }
+}
 
-  const sq = document.querySelectorAll(".square");
-  while ((i >= 0 && j >= 0) || (k >= 0 && l < 8) || (m < 8 && n >= 0) || (a < 8 && b < 8)) {
-    const sq = document.querySelector(`[data-pos="${i}_${j}"]`);
-    const sq2 = document.querySelector(`[data-pos="${k}_${l}"]`);
-    const sq3 = document.querySelector(`[data-pos="${m}_${n}"]`);
-    const sq4 = document.querySelector(`[data-pos="${a}_${b}"]`);
-    console.log(sq);
+function helper(diagRow, diagCol, currRow, currCol) {
+  while (currRow >= 0 && currCol >= 0 && currRow < 8 && currCol < 8) {
+    const sq = document.querySelector(`[data-pos="${currRow}_${currCol}"]`);
     if (sq) {
       sq.classList.add("highlight");
     }
-    if (sq2) {
-      sq2.classList.add("highlight");
-    }
-
-    if (sq3) {
-      sq3.classList.add("highlight");
-    }
-    if (sq4) {
-      sq4.classList.add("highlight");
-    }
-    i--;
-    j--;
-    k--;
-    l++;
-    m++;
-    n--;
-    a++;
-    b++;
+    currRow += diagRow;
+    currCol += diagCol;
   }
 }

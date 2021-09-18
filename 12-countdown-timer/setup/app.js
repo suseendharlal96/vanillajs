@@ -28,7 +28,7 @@ function getTimeFormat(date) {
   return hr + ":" + min + ampm;
 }
 
-const offerEndDate = new Date("2021/09/24");
+const offerEndDate = new Date("2021/09/19");
 let timeDiff;
 
 function calcRemainingTime() {
@@ -44,15 +44,14 @@ function calcRemainingTime() {
   giveAwayText.textContent = `giveaway ends on ${weekdays[futureDate.getDay()]}, ${futureDate.getDate()} ${
     months[futureDate.getMonth()]
   } ${futureDate.getFullYear()}, ${getTimeFormat(futureDate)}`;
+  if (timeDiff < 0) {
+    clearInterval(countdown);
+    deadLine.innerHTML = `<h4 class="expired">sorry, this giveaway has expired!</h4>`;
+  }
   [dayDiff, hrDiff, minDiff, secDiff].forEach((d, i) => {
     document.getElementsByClassName("days")[i].textContent = d;
   });
 }
 
-let countDown;
+let countDown = setInterval(calcRemainingTime, 1000);
 calcRemainingTime();
-countDown = setInterval(calcRemainingTime, 1000);
-if (timeDiff < 0) {
-  clearInterval(countdown);
-  deadLine.innerHTML = `<h4 class="expired">sorry, this giveaway has expired!</h4>`;
-}
