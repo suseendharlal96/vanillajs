@@ -22,11 +22,10 @@ btn.addEventListener("click", (e) => generate(e));
 
 function generate(e) {
   e.preventDefault();
-
   let str = "";
   const disp = document.getElementsByClassName("lorem-text")[0];
   disp.innerHTML = "";
-  for (let i = 0; i < +count.value; i++) {
+  for (let i = 0; i < Math.abs(+count.value); i++) {
     str += text[i % text.length];
     const para = document.createElement("p");
     para.classList.add("result");

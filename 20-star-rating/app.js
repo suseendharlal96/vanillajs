@@ -1,4 +1,4 @@
-const count = 5;
+const count = 10;
 const set = new Set();
 let selectedId = null;
 const starContainer = document.querySelector(".rating-container");
