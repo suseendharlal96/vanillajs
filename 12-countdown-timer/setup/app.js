@@ -30,9 +30,11 @@ function getTimeFormat(date) {
 
 const offerEndDate = new Date("2021/09/19");
 let timeDiff;
+let countDown = setInterval(calcRemainingTime, 1000);
+calcRemainingTime();
 
 function calcRemainingTime() {
-  const futureDate = new Date(date.getFullYear(), date.getMonth(), offerEndDate.getDate(), 1, 20, 0);
+  const futureDate = new Date(date.getFullYear(), date.getMonth(), new Date().getDate()+10, 1, 20, 0);
   timeDiff = futureDate.getTime() - new Date().getTime();
   // console.log(timeDiff);
 
@@ -45,13 +47,13 @@ function calcRemainingTime() {
     months[futureDate.getMonth()]
   } ${futureDate.getFullYear()}, ${getTimeFormat(futureDate)}`;
   if (timeDiff < 0) {
-    clearInterval(countdown);
+    // if (countDown) {
+    clearInterval(countDown);
+    // }
     deadLine.innerHTML = `<h4 class="expired">sorry, this giveaway has expired!</h4>`;
+  } else {
+    [dayDiff, hrDiff, minDiff, secDiff].forEach((d, i) => {
+      document.getElementsByClassName("days")[i].textContent = d;
+    });
   }
-  [dayDiff, hrDiff, minDiff, secDiff].forEach((d, i) => {
-    document.getElementsByClassName("days")[i].textContent = d;
-  });
 }
-
-let countDown = setInterval(calcRemainingTime, 1000);
-calcRemainingTime();
