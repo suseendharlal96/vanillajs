@@ -13,6 +13,7 @@ const slideData = [
   },
 ];
 let activeIndex = 0;
+
 const slideContainer = document.createElement("div");
 slideContainer.classList.add("slider-container");
 
@@ -32,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function nav(type) {
-  const btn = document.getElementsByClassName("slide");
+  const slides = document.getElementsByClassName("slide");
   if (type === "next") {
     activeIndex = (activeIndex + 1) % slideData.length;
   } else {
@@ -43,8 +44,8 @@ function nav(type) {
   }
   getButtonVisibility();
 
-  for (let i = 0; i < btn.length; i++) {
-    btn[i].style.transform = `translateX(-${activeIndex * 100}%)`;
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.transform = `translateX(-${activeIndex * 100}%)`;
   }
 }
 

@@ -33,8 +33,8 @@ function removeHighlight() {
 }
 
 function highlight(r, c) {
-  for (let d of directions) {
-    helper(d[0], d[1], r, c);
+  for (let [dirX, dirY] of directions) {
+    helper(dirX, dirY, r, c);
   }
 }
 
