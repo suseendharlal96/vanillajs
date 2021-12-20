@@ -1,3 +1,5 @@
+// Constants
+
 const calcButtons = [
   { val: "AC", dataset: "all-clear" },
   { val: "DEL", dataset: "delete" },
@@ -10,6 +12,8 @@ const operations = ["*", "+", "-"];
 const matrix = Array.from({ length: 3 }).map((_, i) => new Array(3).fill(i + 1));
 
 const calcGrid = document.getElementsByClassName("calc-grid")[0];
+
+// Building the calculator UI
 
 (() => {
   for (let i = 0; i < 3; i++) {
@@ -57,20 +61,21 @@ class Calculator {
     this.operation = undefined;
   }
   delete() {
-    console.log("del");
-    this.currentOperand = this.currentOperand.slice(0, -1);
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
   }
   appendNumber(number) {
     if (number === "." && this.currentOperand.includes(".")) return;
     this.currentOperand = this.currentOperand + number;
   }
   chooseOperation(operation) {
-    if (this.currentOperand === "") return;
-    if (this.prevOperand !== "") {
+    if (this.prev.innerText.split(" ")[1]&&["*", "+", "-",'/'].includes(this.prev.innerText.split(" ")[1])&&this.currentOperand==='') {
+      this.operation = operation;
+      return
+    } else if (this.prevOperand !== "") {
       this.compute();
     }
-    this.operation = operation;
     this.prevOperand = this.currentOperand;
+    this.operation = operation;
     this.currentOperand = "";
   }
   compute() {
@@ -100,7 +105,6 @@ class Calculator {
   }
 
   addCommaSeperator(num) {
-      console.log({num});
     const integer = num.toString().split(".")[0];
     const decimal = num.toString().split(".")[1];
     let finalDisp = "";
@@ -109,15 +113,14 @@ class Calculator {
     } else {
       finalDisp = integer.toLocaleString("en", { maximumFractionDigits: 0 });
     }
-    if (decimal !== null&&decimal!==undefined) {
-      return `${finalDisp}.${decimal||''}`;
+    if (decimal !== null && decimal !== undefined) {
+      return `${finalDisp}.${decimal || ""}`;
     } else {
       return finalDisp;
     }
   }
 
   updateDisp() {
-    console.log(this.curr);
     this.curr.innerText = this.addCommaSeperator(this.currentOperand);
     if (this.operation !== undefined) {
       this.prev.innerText = `${this.addCommaSeperator(this.prevOperand)} ${this.operation || ""}`;
@@ -127,6 +130,7 @@ class Calculator {
   }
 }
 
+// Accessing the DOM elements
 const numberBtns = document.querySelectorAll("[data-number]");
 const operationBtns = document.querySelectorAll("[data-operation]");
 const equalsBtn = document.querySelector("[data-equals]");
@@ -135,21 +139,17 @@ const allClearBtn = document.querySelector("[data-all-clear]");
 const prev = document.querySelector("[data-prev-operand]");
 const curr = document.querySelector("[data-curr-operand]");
 
-function handleClick() {
-  console.log("clicked");
-}
-
+// Instantiating object
 const calc = new Calculator(prev, curr);
 
+// adding event listeners
 numberBtns.forEach((btn) => {
-  //   console.log(btn.innerText);
   btn.addEventListener("click", () => {
     calc.appendNumber(btn.innerText);
     calc.updateDisp();
   });
 });
 operationBtns.forEach((btn) => {
-  //   console.log(btn.innerText);
   btn.addEventListener("click", () => {
     calc.chooseOperation(btn.innerText);
     calc.updateDisp();
