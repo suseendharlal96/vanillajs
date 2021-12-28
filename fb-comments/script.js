@@ -23,24 +23,27 @@ function generateReplies(parent, text, isReplies = false) {
   replyBtn.textContent = "reply";
   replyBtn.id = parent.children.length + 1;
   replyBtn.addEventListener("click", (e, i) => {
-    const div = document.createElement("div");
-    div.classList.add("reply");
-    const replyInput = document.createElement("input");
-    const innerRepBtn = document.createElement("button");
-    innerRepBtn.textContent = "comment";
-    innerRepBtn.id = replyBtn.id + "" + i;
-    innerRepBtn.addEventListener("click", (e) => {
-      generateReplies(e.target.parentElement.parentElement, e.target.previousElementSibling.value, true);
-      div.remove();
-    });
-    const innerCancel = document.createElement("button");
-    innerCancel.textContent = "cancel";
-    innerCancel.addEventListener("click", () => {
-      div.remove();
-    });
-    div.append(replyInput, innerRepBtn, innerCancel);
-    replyBtn.parentElement.append(div);
-    replyInput.focus();
+    if (!document.getElementsByClassName("replyInput")[0]) {
+      const div = document.createElement("div");
+      div.classList.add("reply");
+      const replyInput = document.createElement("input");
+      replyInput.classList.add("replyInput");
+      const innerRepBtn = document.createElement("button");
+      innerRepBtn.textContent = "comment";
+      innerRepBtn.id = replyBtn.id + "" + i;
+      innerRepBtn.addEventListener("click", (e) => {
+        generateReplies(e.target.parentElement.parentElement, e.target.previousElementSibling.value, true);
+        div.remove();
+      });
+      const innerCancel = document.createElement("button");
+      innerCancel.textContent = "cancel";
+      innerCancel.addEventListener("click", () => {
+        div.remove();
+      });
+      div.append(replyInput, innerRepBtn, innerCancel);
+      replyBtn.parentElement.append(div);
+      replyInput.focus();
+    }
   });
   list.append(span, replyBtn);
   ulEl.append(list);
