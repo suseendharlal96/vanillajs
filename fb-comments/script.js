@@ -39,7 +39,6 @@ function createList(id, text) {
     if (document.getElementsByClassName("reply-container")[0]) return;
     const div = document.createElement("div");
     div.classList.add("reply-container");
-    div.classList.add("reply");
     const replyInput = document.createElement("input");
     replyInput.classList.add("replyInput");
     replyInput.placeholder=`reply for ${text}`
