@@ -16,8 +16,7 @@ firstBtn.addEventListener("click", (e) => {
   }
 });
 
-start();
-function start() {
+(()=> {
   commentObj.forEach(({ id, text, parent: parentId }) => {
     let list = createList(id, text);
     let parent = container;
@@ -26,7 +25,7 @@ function start() {
     }
     appendWithParent(parent, list);
   });
-}
+})();
 
 function createList(id, text) {
   const list = document.createElement("li");
