@@ -3,3 +3,35 @@
 *::after {
   box-sizing: border-box;
 }
+
+/* body{
+  height: 100vh;
+} */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+#calender{
+  height: 500px
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(7, 100px);
+}
+
+.col{
+  border: 1px solid #000000;
+  /* border-radius: 4px; */
+  text-align: center;
+  padding: 1em;
+}
+
+.current-date{
+  background-color: burlywood;
+}
