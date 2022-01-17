@@ -16,8 +16,8 @@
   height: 100%;
 }
 
-#calender{
-  height: 500px
+#calender {
+  height: 500px;
 }
 
 .row {
@@ -25,13 +25,17 @@
   grid-template-columns: repeat(7, 100px);
 }
 
-.col{
+.col {
   border: 1px solid #000000;
+  font-weight: bold;
   /* border-radius: 4px; */
   text-align: center;
   padding: 1em;
 }
 
-.current-date{
+.current-date {
   background-color: burlywood;
+}
+.blur {
+  color: rgba(0, 0, 0, 0.35);
 }
