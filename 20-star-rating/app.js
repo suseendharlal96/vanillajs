@@ -3,6 +3,9 @@ const set = new Set();
 let selectedId = null;
 const starContainer = document.querySelector(".rating-container");
 const rating = document.getElementsByClassName("rating")[0];
+const smileyContainer = document.getElementsByClassName("smiley")[0];
+smileyContainer.style.fontSize='2em'
+const smileys = ["😢", "😞", "😐", "😀", "😎"];
 
 Array.from({ length: count }).forEach((_, i) => {
   const star = document.createElement("div");
@@ -19,6 +22,7 @@ function setHighlight(id) {
   removeHighlight();
   if (id === selectedId) {
     selectedId = null;
+    smileyContainer.innerText=''
   } else {
     selectedId = id;
     const stars = document.getElementsByClassName("star-five");
@@ -26,6 +30,7 @@ function setHighlight(id) {
       stars[i].style.setProperty("--shape-color", "hsl(39, 90%, 61%)");
       set.add(i);
     }
+    smileyContainer.innerText=smileys[selectedId-1]
   }
   rating.innerText = set.size ? set.size : "-";
 }
