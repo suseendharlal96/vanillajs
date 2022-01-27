@@ -1,18 +1,15 @@
 const clock = document.getElementsByClassName("clock")[0];
 new Array(12).fill().forEach((_, i) => {
-  const num = document.createElement("div");
-  num.innerText = i + 1;
-  num.classList.add("numbers");
+  const numberContainer = document.createElement("div");
+  const number = document.createElement("span");
+  number.innerText = i + 1;
+  numberContainer.classList.add("numbers");
   const deg = (i + 1) * 30;
-  num.style.transform = `rotate(${deg}deg)`;
-//   for (let i = 0; i < 3; i++) {
-//     const pointer = document.createElement("div");
-//     pointer.innerText = "s";
-//     pointer.classList.add("pointer");
-//     pointer.style.transform = `rotate(${deg + deg / 4 + i}deg)`;
-//     num.append(pointer);
-//   }
-  clock.append(num);
+  number.style.position = "absolute";
+  number.style.transform = `translateX(-50%) rotate(${-1 * deg}deg)`;
+  numberContainer.style.transform = `rotate(${deg}deg)`;
+  numberContainer.append(number);
+  clock.append(numberContainer);
 });
 
 setInterval(() => {
