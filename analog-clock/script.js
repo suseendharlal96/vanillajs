@@ -54,7 +54,6 @@ timeZones.forEach((t) => {
   input.id = t.name;
   input.checked = t.selected;
   div.addEventListener("click", function (e) {
-      console.log(this.children[this.childElementCount-1].innerText,this.firstChild.checked);
     if (this.firstChild.checked && this.children[this.childElementCount-1].innerText === t.name) {
         clearInterval(t.interval);
         t.selected = false;
@@ -114,7 +113,6 @@ function createClock() {
         const time = new Date().toLocaleString('en-US', {
           timeZone: t.name,
         });
-        // console.log(time);
         const sec = new Date(time).getSeconds() / 60;
         const min = (sec + new Date(time).getMinutes()) / 60;
         const hr = (min + new Date(time).getHours()) / 12;
@@ -122,7 +120,6 @@ function createClock() {
       }
 
       function setHandsPosition(s, m, h) {
-        // console.log( document.getElementsByClassName("sec")[0]);
         document.getElementsByClassName(`sec-${t.name}`)[0].style.transform = `translateX(-50%) rotate(${s * 360}deg)`;
         document.getElementsByClassName(`min-${t.name}`)[0].style.transform = `translateX(-50%) rotate(${m * 360}deg)`;
         document.getElementsByClassName(`hour-${t.name}`)[0].style.transform = `translateX(-50%) rotate(${h * 360}deg)`;
