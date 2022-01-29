@@ -53,12 +53,15 @@ timeZones.forEach((t) => {
   input.type = "checkbox";
   input.id = t.name;
   input.checked = t.selected;
-  input.addEventListener("click", function (e) {
-    if (this.checked && this.id === t.name) {
-      t.selected = true;
+  div.addEventListener("click", function (e) {
+      console.log(this.children[this.childElementCount-1].innerText,this.firstChild.checked);
+    if (this.firstChild.checked && this.children[this.childElementCount-1].innerText === t.name) {
+        clearInterval(t.interval);
+        t.selected = false;
+        this.firstChild.checked=false
     } else {
-      t.selected = false;
-      clearInterval(t.interval);
+        t.selected = true;
+        this.firstChild.checked=true
     }
     createClock();
   });
@@ -108,10 +111,10 @@ function createClock() {
       }, 1000);
 
       function initClock() {
-        const time = new Date().toLocaleString("en-US", {
+        const time = new Date().toLocaleString('en-US', {
           timeZone: t.name,
         });
-        console.log(time);
+        // console.log(time);
         const sec = new Date(time).getSeconds() / 60;
         const min = (sec + new Date(time).getMinutes()) / 60;
         const hr = (min + new Date(time).getHours()) / 12;
