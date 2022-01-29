@@ -54,17 +54,18 @@ timeZones.forEach((t) => {
   input.id = t.name;
   input.checked = t.selected;
   div.addEventListener("click", function (e) {
-    if (this.firstChild.checked && this.children[this.childElementCount-1].innerText === t.name) {
-        clearInterval(t.interval);
-        t.selected = false;
-        this.firstChild.checked=false
+    if (this.firstChild.checked) {
+      t.selected = true;
+      input.checked = true;
     } else {
-        t.selected = true;
-        this.firstChild.checked=true
+      clearInterval(t.interval);
+      t.selected = false;
+      input.checked = false;
     }
     createClock();
   });
   // createClock()
+  name.id = t.name;
   name.innerText = t.name;
   div.append(input, name);
   zoneContainer.append(div);
@@ -76,7 +77,7 @@ function createClock() {
     .filter((t) => t.selected)
     .forEach((t, i) => {
       clearInterval(t.interval);
-      const clockContent=document.createElement("div");
+      const clockContent = document.createElement("div");
       const clock = document.createElement("div");
       clock.classList.add("clock");
       const hour = document.createElement("div");
@@ -89,7 +90,7 @@ function createClock() {
       clock.append(hour, min, sec);
       const place = document.createElement("div");
       place.innerText = t.name;
-      clockContent.append(...[place,clock])
+      clockContent.append(...[place, clock]);
       clockContainer.append(clockContent);
 
       new Array(12).fill().forEach((_, i) => {
@@ -110,7 +111,7 @@ function createClock() {
       }, 1000);
 
       function initClock() {
-        const time = new Date().toLocaleString('en-US', {
+        const time = new Date().toLocaleString("en-US", {
           timeZone: t.name,
         });
         const sec = new Date(time).getSeconds() / 60;
