@@ -5,10 +5,18 @@
 }
 body,
 html {
+}
+
+.clock-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.timezones{
+  margin-bottom: 5%;
 }
 
 .clock {
@@ -64,17 +72,17 @@ html {
   border-top-right-radius: 10px;
   transform-origin: bottom;
 }
-.hour {
+[class^="hand hour-"] {
   background-color: black;
   width: 7px;
   height: 30%;
 }
-.min {
+[class^="hand min-"] {
   background-color: black;
   width: 7px;
   height: 45%;
 }
-.sec {
+[class^="hand sec-"] {
   background-color: red;
   width: 3px;
   height: 45%;
