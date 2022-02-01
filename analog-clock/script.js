@@ -6,45 +6,45 @@ const zoneContainer = document.getElementsByClassName("timezones")[0];
 
 const timeZones = [
   {
+    name: "Asia/Kolkata",
+    selected: true,
+    interval: new Date().getMilliseconds(),
+  },
+  {
     name: "Europe/Andorra",
     selected: true,
-    interval: 1,
+    interval: new Date().getMilliseconds(),
   },
   {
     name: "Asia/Dubai",
     selected: false,
-    interval: 2,
+    interval: new Date().getMilliseconds(),
   },
   {
     name: "Asia/Kabul",
     selected: true,
-    interval: 3,
+    interval: new Date().getMilliseconds(),
   },
   {
     name: "America/New_York",
     selected: true,
-    interval: 4,
+    interval: new Date().getMilliseconds(),
   },
   {
     name: "Europe/Moscow",
     selected: true,
-    interval: 5,
+    interval: new Date().getMilliseconds(),
   },
   {
     name: "Europe/Dublin",
     selected: false,
-    interval: 6,
+    interval: new Date().getMilliseconds(),
   },
+ 
   {
     name: "Africa/Johannesburg",
     selected: true,
-    interval: 7,
-  },
-
-  {
-    name: "Asia/Kolkata",
-    selected: true,
-    interval: 8,
+    interval: new Date().getMilliseconds(),
   },
 ];
 
