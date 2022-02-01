@@ -85,7 +85,7 @@ html {
 [class^="hand sec-"] {
   background-color: red;
   width: 3px;
-  height: 45%;
+  height: 48%;
   /* transition: transform 100ms; */
 }
 

@@ -8,43 +8,43 @@ const timeZones = [
   {
     name: "Asia/Kolkata",
     selected: true,
-    interval: new Date().getMilliseconds(),
+    interval: null,
   },
   {
     name: "Europe/Andorra",
     selected: true,
-    interval: new Date().getMilliseconds(),
+    interval: null,
   },
   {
     name: "Asia/Dubai",
     selected: false,
-    interval: new Date().getMilliseconds(),
+    interval: null,
   },
   {
     name: "Asia/Kabul",
     selected: true,
-    interval: new Date().getMilliseconds(),
+    interval: null,
   },
   {
     name: "America/New_York",
     selected: true,
-    interval: new Date().getMilliseconds(),
+    interval: null,
   },
   {
     name: "Europe/Moscow",
     selected: true,
-    interval: new Date().getMilliseconds(),
+    interval: null,
   },
   {
     name: "Europe/Dublin",
     selected: false,
-    interval: new Date().getMilliseconds(),
+    interval: null,
   },
  
   {
     name: "Africa/Johannesburg",
     selected: true,
-    interval: new Date().getMilliseconds(),
+    interval: null,
   },
 ];
 
