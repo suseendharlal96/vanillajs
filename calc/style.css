@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#calc-container {
+  height: 100vh;
+  display: grid;
+  gap: 5px;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  grid-template-areas:
+    "disp disp disp disp"
+    "ac ac del divide"
+    "one two three mul"
+    "four five six add"
+    "seven eight nine sub"
+    "point zero equal equal";
+}
+
+.grid-item {
+  padding: 24px;
+  background-color: bisque;
+  cursor: pointer;
+}
+
+.disp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  background-color: #000000;
+  color: #ffffff;
+  height: 80px;
+}
