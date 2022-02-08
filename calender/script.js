@@ -86,7 +86,7 @@ function createCalender(year, month) {
     const todayDate = today.toString().split(" ")[2];
     const todayMonth = today.toString().split(" ")[1];
     const todayYear = today.toString().split(" ")[3];
-    return todayDate === date.toString() && todayMonth === month && todayYear === year.toString();
+    return todayDate === (date < 10 ? "0" + date : date.toString()) && todayMonth === month && todayYear === year.toString();
   }
 
   function populatePrevNextMonth() {
