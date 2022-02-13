@@ -83,6 +83,7 @@ function check(r, c) {
       duration: 100,
       easing: "linear",
     });
+    scoreContainer.innerText = 0;
     startBtn.classList.remove("disable");
     gridContainer.classList.add("disable");
   }
