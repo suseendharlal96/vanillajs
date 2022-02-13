@@ -1,0 +1,43 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.grid {
+  display: grid;
+  gap: 0.5px;
+  width: 400px;
+  height: 400px;
+}
+.square {
+  outline: 1px solid grey;
+}
+
+.disable {
+  /* pointer-events: none; */
+  cursor: no-drop;
+}
+
+.highlight {
+  background-color: violet;
+}
+
+.success {
+  background-color: green;
+}
+
+.failure {
+  background-color: red;
+}
