@@ -5,7 +5,6 @@ export class Grid {
   }
   createGrid({ r, g, b, row, col, check }) {
     this.gridContainer.style.gridTemplateColumns = `repeat(${this.gridSize}, 1fr)`;
-    console.log({ row, col });
     for (let i = 0; i < this.gridSize; i++) {
       for (let j = 0; j < this.gridSize; j++) {
         const sq = document.createElement("div");

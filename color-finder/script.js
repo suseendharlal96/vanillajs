@@ -1,7 +1,6 @@
 import { Grid } from "./grid.js";
 import { getRandomColor, getRandomIndex, calcHighScore } from "./utility.js";
 
-const container = document.getElementsByClassName("container")[0];
 const gridContainer = document.getElementsByClassName("grid")[0];
 const scoreContainer = document.getElementById("score");
 const highScoreContainer = document.getElementById("highscore");
