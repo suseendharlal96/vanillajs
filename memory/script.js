@@ -35,13 +35,11 @@ startBtn.addEventListener("click", function () {
 });
 
 function addHighLight() {
-  //   if (gridContainer.classList.value === "disable") return;
   clickCount = 0;
   selectedIndex.length = 0;
   for (let i = 0; i < level; i++) {
     selectedIndex.push(getRandomIndex(gridSize - 1));
   }
-//   console.log(selectedIndex);
   selectedIndex?.forEach((rIndx, i) => {
     setTimeout(() => {
       setTimeout(() => {
@@ -59,18 +57,17 @@ function addHighLight() {
 
 function check(r, c) {
   if (gridContainer.classList.value.indexOf("disable") >= 0) return;
-//   console.log("click");
   if (selectedIndex[clickCount] === `${r}_${c}`) {
     clickCount++;
     setTimeout(() => {
       document.getElementById(`${r}_${c}`).classList.remove("success");
     }, 400);
     document.getElementById(`${r}_${c}`).classList.add("success");
-    // console.log({ clickCount, selectedIndex });
     if (clickCount === selectedIndex.length) {
       score++;
       scoreContainer.innerText = score;
       calcHighScore(score, highScoreContainer);
+      gridContainer.classList.add("disable");
       setTimeout(() => addHighLight(++level), 1000);
     }
   } else {
@@ -83,7 +80,9 @@ function check(r, c) {
       duration: 100,
       easing: "linear",
     });
-    scoreContainer.innerText = 0;
+    score = 0;
+    scoreContainer.innerText = score;
+    level = 1;
     startBtn.classList.remove("disable");
     gridContainer.classList.add("disable");
   }
