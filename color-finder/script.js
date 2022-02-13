@@ -1,3 +1,6 @@
+import { Grid } from "./grid.js";
+import { getRandomColor, getRandomIndex, calcHighScore } from "./utility.js";
+
 const container = document.getElementsByClassName("container")[0];
 const gridContainer = document.getElementsByClassName("grid")[0];
 const scoreContainer = document.getElementById("score");
@@ -14,18 +17,9 @@ function init(gridSize) {
   gridContainer.innerHTML = "";
   const [r, g, b] = getRandomColor();
   const [row, col] = getRandomIndex(gridSize - 1);
-  gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
-  console.log({ row, col });
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = 0; j < gridSize; j++) {
-      const sq = document.createElement("div");
-      sq.id = `${i}_${j}`;
-      sq.classList.add("square");
-      sq.style.backgroundColor = `rgba(${r},${g},${b},${i === row && j === col ? 0.9 : 1})`;
-      sq.addEventListener("click", () => check(i, j, row, col));
-      gridContainer.append(sq);
-    }
-  }
+  const grid = new Grid(gridSize, gridContainer);
+  const params = { r, g, b, row, col, check };
+  grid.createGrid(params);
 }
 
 function check(r, c, row, col) {
@@ -43,20 +37,5 @@ function check(r, c, row, col) {
     init(gridSize);
   }
   scoreContainer.innerText = score;
-  highScoreContainer.innerText = localStorage.getItem("highscore") ? (localStorage.getItem("highscore") < score ? score : localStorage.getItem("highscore")) : score;
-  if (localStorage.getItem("highscore") < score) localStorage.setItem("highscore", score);
-}
-
-function getRandomColor() {
-  const r = Math.floor(Math.random() * 255 + 1);
-  const g = Math.floor(Math.random() * 255 + 1);
-  const b = Math.floor(Math.random() * 255 + 1);
-  //   console.log({ r, g, b });
-  return [r, g, b];
-}
-
-function getRandomIndex(gridSize) {
-  const r = Math.floor(Math.random() * gridSize + 1);
-  const c = Math.floor(Math.random() * gridSize + 1);
-  return [r, c];
+  calcHighScore(score,highScoreContainer);
 }
