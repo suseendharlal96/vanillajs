@@ -5,17 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script src="script.js" type="module" defer></script>
     <title>Calender</title>
   </head>
   <body>
     <div class="container">
       <p id="currentmonth"></p>
+      <div><input type="color" value="#90EE90" disabled /><label>Event</label> <input type="color" value="#FF4038" disabled /><label>Today</label></div>
       <div id="calender"></div>
-      <div>
+      <div id="btnContainer">
         <button id="prev">Prev</button>
         <button id="today">Today</button>
         <button id="next">Next</button>
+      </div>
+      <div id="modal-overlay" hidden>
+        <div class="modal-body">
+          <h3 id="event-date"></h3>
+          <input type="text" id="title" placeholder="title" />
+          <textarea id="desc" placeholder="description"></textarea>
+          <div>
+            <button id="cancel">Cancel</button>
+            <button id="save">Save</button>
+          </div>
+        </div>
       </div>
     </div>
   </body>

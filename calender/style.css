@@ -2,11 +2,12 @@
 *::before,
 *::after {
   box-sizing: border-box;
+
 }
 
-/* body{
-  height: 100vh;
-} */
+body{
+  margin-top:0;
+}
 
 .container {
   display: flex;
@@ -14,10 +15,11 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  gap:25px;
 }
 
 #calender {
-  height: 500px;
+  height: 350px;
 }
 
 .row {
@@ -34,8 +36,38 @@
 }
 
 .current-date {
-  background-color: burlywood;
+  position:relative;
+  color:#FF0000;
 }
+
 .blur {
   color: rgba(0, 0, 0, 0.35);
+}
+#modal-overlay{
+  height:100vh;
+  width:100vw;
+  background:rgba(0,0,0,0.8);
+  position:fixed;
+}
+
+.modal-body{
+  width:400px;
+  height:50%;
+  padding:0 2.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position:absolute;
+  background: #FFFFFF;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%)
+}
+
+textarea{
+  resize:vertical;
+}
+
+input[type="color"]{
+  margin-left:2rem;
 }
