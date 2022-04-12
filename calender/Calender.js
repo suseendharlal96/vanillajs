@@ -4,15 +4,15 @@ class Calender {
     this.currentMonthEl = currentMonthEl;
   }
 
-//   set calenderEl(calenderEl) {
-//       console.log(this.calenderEl,{calenderEl});
-//       this.calenderEl = calenderEl;
-//     }
-    
-//     get calenderEl() {
-//       console.log(this.calenderEl,{calenderEl});
-//     return this.calenderEl;
-//   }
+  //   set calenderEl(calenderEl) {
+  //       console.log(this.calenderEl,{calenderEl});
+  //       this.calenderEl = calenderEl;
+  //     }
+
+  //     get calenderEl() {
+  //       console.log(this.calenderEl,{calenderEl});
+  //     return this.calenderEl;
+  //   }
 
   generateLayout(year, month) {
     this.calenderEl.innerHTML = "";
@@ -52,6 +52,7 @@ class Calender {
       if (colNum === 6) rowNum++;
       startDate++;
     }
+    this.populatePrevNextMonth(year, month);
   }
 
   initCalender(start, end) {
@@ -76,7 +77,10 @@ class Calender {
     }
   }
 
-  populatePrevNextMonth() {
+  populatePrevNextMonth(year, month) {
+    //   console.log({year,month});
+    let currYear=year
+    let currMonth=month
     let prevMonth = new Date(year, month, 0).getDate();
     for (let i = 6; i >= 0; i--) {
       if (!this.calenderEl.children[1].children[i].innerText) {
@@ -100,6 +104,7 @@ class Calender {
         const col = this.calenderEl.children[this.calenderEl.children.length - 1].children[i];
         col.innerText = nextMonth++;
         col.classList.add("blur");
+        col.setAttribute("data-date", new Date(year, month - 1, prevMonth));
         col.addEventListener("click", () => {
           currMonth++;
           if (currMonth === 12) {
